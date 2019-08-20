@@ -63,3 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bundler', '~> 2.0.1'
 gem 'rack-timeout', '0.3.2'
+
+group :development, :test do
+  gem 'rspec-rails', '~>3.5'
+end

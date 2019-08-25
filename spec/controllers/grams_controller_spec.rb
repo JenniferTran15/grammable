@@ -91,7 +91,7 @@ RSpec.describe GramsController, type: :controller do
       get :edit, params: { id: gram.id }
       expect(response).to redirect_to new_user_session_path
     end
-    
+
     it "should successfully show the edit form if the gram is found" do
       gram = FactoryBot.create(:gram)
       sign_in gram.user
@@ -157,7 +157,13 @@ RSpec.describe GramsController, type: :controller do
       user = FactoryBot.create(:user)
       sign_in user
 
-      post :create, params: { gram: { message: 'Hello!' } }
+      post :create, params: { 
+        gram: { 
+          message: 'Hello!',
+          picture: fixture_file_upload("/picture.png", 'image/png')
+        } 
+      }
+      
       expect(response).to redirect_to root_path
 
       gram = Gram.last
